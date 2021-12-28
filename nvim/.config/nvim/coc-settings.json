@@ -1,0 +1,31 @@
+{
+    "diagnostic.checkCurrentLine": true,
+    "languageserver": {
+        "solidity": {
+            "command": "/usr/local/bin/solc-linux64",
+            "args": [ "--lsp" ],
+            "trace.server": "verbose",
+            "rootPatterns": [".git/"],
+            "filetypes": ["solidity"]
+        }, 
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                 }
+            }
+        }
+    },
+    "java.project.referencedLibraries": [
+    ],
+    "explorer.width": 30,
+    "explorer.previewAction.onHover": false,
+    "explorer.keyMappings.global": {
+	    "<cr>": ["expandable?", "expand", "open"],
+	    "v": "open:vsplit",
+    },
+    "explorer.quitOnOpen": true
+}

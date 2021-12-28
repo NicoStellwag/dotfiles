@@ -1,0 +1,31 @@
+#! /bin/sh
+
+# start sxhkd
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# setup one monitor with 5 desktops
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+bspc monitor -d 1 2 3 4 5
+
+# start other programs and configure stuff
+xsetroot -cursor_name left_ptr &
+$HOME/.config/polybar/launch.sh
+
+# bspwm config
+bspc config border_width         2
+bspc config window_gap           6 
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# bspwm rules
+bspc rule -a discord desktop='^2'
+bspc rule -a Spotify desktop='^2'
+
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Gimp desktop='^3' state=floating follow=on
