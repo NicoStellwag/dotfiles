@@ -47,7 +47,8 @@ require('telescope').setup {
 			n = {
 				["<M-j>"] = actions.close
 			}
-		}
+		},
+		layout_strategy = 'flex'
 	}
 }
 END
