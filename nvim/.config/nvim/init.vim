@@ -4,8 +4,9 @@ call plug#begin(stdpath('data').'/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'tomlion/vim-solidity'
 	Plug 'joshdick/onedark.vim'
-	Plug 'junegunn/fzf'
-	Plug 'junegunn/fzf.vim'
+	Plug 'tpope/vim-commentary'
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'lervag/vimtex'
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
@@ -24,6 +25,29 @@ lua << END
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true
+	}
+}
+END
+
+" Telescope config
+lua << END
+local actions = require("telescope.actions")
+local previewers = require("telescope.previewers")
+require('telescope').setup {
+	defaults = {
+		previewer = true,
+		file_previewer = previewers.vim_buffer_cat.new,
+		grep_previewer = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
+		mappings = {
+			i = {
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous
+			},
+			n = {
+				["<M-j>"] = actions.close
+			}
+		}
 	}
 }
 END
@@ -67,15 +91,17 @@ set smartcase
 " keep cursor in the middle of the screen
 :set scrolloff=5
 
-" key mappings
+" vim mappings
 imap <M-j> <Esc>
 vmap <M-j> <Esc>
 tmap <M-j> <Esc>
 smap <M-j> <Esc>
 nmap <M-k> :CocCommand explorer<CR>
-map <M-l> :Files<CR>
+nmap <M-l> <cmd>Telescope find_files<CR>
+nmap <M-;> <cmd>Telescope live_grep<CR>
 nnoremap <CR> :noh<CR>
 
+" coc config
 function! s:show_documentation()
 	if (index(['vim','help'], &filetype) >= 0)
         	execute 'h '.expand('<cword>')
