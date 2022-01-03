@@ -102,7 +102,6 @@ type = internal/pulseaudio
 
 format-volume = <label-volume>
 label-volume =  %percentage%%
-label-volume-foreground = ${root.foreground}
 
 label-muted = 婢 muted
 label-muted-foreground = #666
@@ -112,7 +111,6 @@ type = custom/script
 tail = true
 format-underline = ${colors.cyan}
 label-padding = 2
-label-foreground = ${colors.foreground}
 
 # Icons mixed from Font Awesome 5 and Material Icons
 # You can copy-paste your options for each possible action, which is more
@@ -141,3 +139,5 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+; vim:ft=dosini
