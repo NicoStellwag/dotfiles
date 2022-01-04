@@ -23,6 +23,10 @@ urxvt
 super + @space
 	dmenu_run
 
+# browser
+super + BackSpace
+	chromium
+
 # lockscreen
 alt + shift + x
 	source ~/.lockscreen
