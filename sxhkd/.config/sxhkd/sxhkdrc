@@ -21,7 +21,7 @@ urxvt
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show run
 
 # browser
 super + BackSpace
