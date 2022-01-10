@@ -21,6 +21,9 @@
     },
     "java.project.referencedLibraries": [
     ],
+    "python.linting.pylintArgs": [
+	    "--generate-members"
+    ],
     "explorer.width": 30,
     "explorer.previewAction.onHover": false,
     "explorer.keyMappings.global": {
