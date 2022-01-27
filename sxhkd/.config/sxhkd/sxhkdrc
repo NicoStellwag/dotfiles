@@ -147,3 +147,7 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# swar vertical and horizontal split
+super + shift + s 
+	bspc node @parent -R 90
