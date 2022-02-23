@@ -4,6 +4,8 @@ call plug#begin(stdpath('data').'/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'tomlion/vim-solidity'
 	Plug 'joshdick/onedark.vim'
+	Plug 'shaunsingh/nord.nvim'
+        Plug 'sainnhe/gruvbox-material'
 	Plug 'tpope/vim-commentary'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
@@ -20,11 +22,33 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 
 " Set color scheme and activate syntax highlighting
-autocmd vimenter * ++nested colorscheme onedark
+" Onedark
+" autocmd vimenter * ++nested colorscheme onedark
+" Nord
+" colorscheme nord
+" Gruvbox
+if has('termguicolors')
+	set termguicolors
+endif
+set background=dark
+let g:gruvbox_material_background = 'medium' " / hard / soft
+colorscheme gruvbox-material
+
 lua << END
 require'nvim-treesitter.configs'.setup {
 	highlight = {
 		enable = true
+	}
+}
+END
+
+" Enable status line
+lua << END
+require'lualine'.setup {
+	options = {
+		-- theme = 'onedark'
+		-- theme = 'nord'
+		theme = 'gruvbox-material'
 	}
 }
 END
@@ -53,12 +77,6 @@ require('telescope').setup {
 }
 END
 
-" Enable status line
-lua << END
-require'lualine'.setup()
-options = {theme = 'onedark'}
-END
-
 " highlight matching brackets
 set matchpairs+=<:>
 
@@ -68,8 +86,6 @@ set relativenumber
 
 " underline current line
 set cursorline
-hi clear CursorLine
-hi CursorLine gui=underline
 
 " activate syntax highlighting
 syntax on
