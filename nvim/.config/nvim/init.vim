@@ -84,7 +84,7 @@ set matchpairs+=<:>
 set number
 set relativenumber
 
-" underline current line
+" highlight current line
 set cursorline
 
 " activate syntax highlighting
@@ -95,6 +95,10 @@ set autoindent
 
 " nvim use block cursor
 set guicursor=i:block
+
+" set tabspace to 4 spaces
+set tabstop=4
+set shiftwidth=4
 
 " Use normal clipboard
 if !empty(provider#clipboard#Executable())
