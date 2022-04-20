@@ -47,7 +47,7 @@ module-margin-right = 1
 font-0 = Hack Nerd Font Mono:size=10;1
 
 modules-left = bspwm
-modules-center = xwindow
+modules-center = xwindow spotify previous playpause next
 modules-right = pulseaudio xkeyboard battery date
 
 tray-position = right
@@ -55,6 +55,8 @@ tray-padding = 2
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+enable-ipc = true
 
 [module/xwindow]
 type = internal/xwindow
@@ -140,5 +142,45 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/previous]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo "Previous"
+click-left = "spotifyctl -q previous"
+
+
+[module/next]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo "Next"
+click-left = "spotifyctl -q next"
+
+
+[module/playpause]
+type = custom/ipc
+format-font = 2
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo "Pause"
+; Paused
+hook-2 = echo "Play"
+click-left = "spotifyctl -q playpause"
+
+
+[module/spotify]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing/paused show song name and artist
+hook-1 = spotifyctl -q status --format '%artist%: %title%'
+
 
 ; vim:ft=dosini
