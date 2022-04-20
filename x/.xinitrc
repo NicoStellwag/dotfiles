@@ -33,7 +33,7 @@ fi
 # setup display
 xrandr --newmode "3440x1440_60.00"  419.50  3440 3696 4064 4688  1440 1443 1453 1493 -hsync +vsync
 xrandr --addmode DP2 "3440x1440_60.00"
-srandrd autorandr --change
+srandrd "autorandr --change &&  nitrogen --restore &"
 autorandr --change
 
 # start graphical environment
