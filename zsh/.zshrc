@@ -107,6 +107,7 @@ fi
 alias pip="pip3"
 alias vim="nvim"
 alias vi="nvim"
+alias fixtp="sudo modprobe -r psmouse && sudo modprobe psmouse"
 
 # custom functions
 function open () {
